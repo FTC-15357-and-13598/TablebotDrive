@@ -91,8 +91,8 @@ public class JustFieldCent extends LinearOpMode {
          */
 
         //// Set up our telemetry dashboard
-        //FtcDashboard dashboard = FtcDashboard.getInstance();
-        //TelemetryPacket packet = new TelemetryPacket();
+        FtcDashboard dashboard = FtcDashboard.getInstance();
+        TelemetryPacket packet = new TelemetryPacket();
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -138,14 +138,14 @@ public class JustFieldCent extends LinearOpMode {
 
             telemetry.update();
             // This section uses packet.put to send telenmetry data to the dashboard
-            //packet.put("heading", botHeading);
-            //packet.put("frontLeftMotor Power", leftFrontDrive.getPower());
-           // packet.put("frontRightMotor Power", rightFrontDrive.getPower());
+            packet.put("heading", botHeading);
+            packet.put("frontLeftMotor Power", leftFrontDrive.getPower());
+            packet.put("frontRightMotor Power", rightFrontDrive.getPower());
             //Add a packet for the current robot battery voltage
-            //packet.put("Battery Voltage", hardwareMap.voltageSensor.iterator().next().getVoltage());
+            packet.put("Battery Voltage", hardwareMap.voltageSensor.iterator().next().getVoltage());
 
             // You need this to actually send the telemetry data to the dashboard
-            //dashboard.sendTelemetryPacket(packet);
+            dashboard.sendTelemetryPacket(packet);
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             double axial   = -gamepad1.left_stick_y;  // Y Note: pushing stick forward gives negative value
@@ -181,17 +181,6 @@ public class JustFieldCent extends LinearOpMode {
             double rightFrontPower = (axialRotated - lateralRotated - yaw) / denominator * speedModifier;
             double leftBackPower   = (axialRotated - lateralRotated + yaw) / denominator * speedModifier;
             double rightBackPower  = (axialRotated + lateralRotated - yaw) / denominator * speedModifier;
-
-            //If gamepad1 a is pressed move servotest to 0.05
-            //Servo is a 5 rotation servo so 1 rotation is 360 degrees and 0.05 is 18 degrees
-            //if (gamepad1.a) {
-            //    servoTest.setPosition(0.05);
-            //}
-
-            //If gamepad1 b is pressed move servotest to 0.0
-            //if (gamepad1.b) {
-            //    servoTest.setPosition(0.0);
-            //}
 
             // Send calculated power to wheels
             leftFrontDrive.setPower(leftFrontPower);
