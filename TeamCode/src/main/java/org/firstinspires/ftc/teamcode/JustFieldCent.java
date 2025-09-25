@@ -50,6 +50,7 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -105,7 +106,7 @@ public class JustFieldCent extends LinearOpMode {
         // Reverse the direction (flip FORWARD <-> REVERSE ) of any wheel that runs backward
         // Keep testing until ALL the wheels move the robot forward when you push the left joystick forward.
         leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
-        leftBackDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftBackDrive.setDirection(DcMotor.Direction.REVERSE);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
 
@@ -149,7 +150,7 @@ public class JustFieldCent extends LinearOpMode {
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             double axial   = -gamepad1.left_stick_y;  // Y Note: pushing stick forward gives negative value
-            double lateral =  gamepad1.left_stick_x; // X is positive to the right
+            double lateral =  gamepad1.left_stick_x*1.1; // X is positive to the right
             double yaw     =  gamepad1.right_stick_x; // Yaw is positive for right hand rotation\
 
             //Rotate the movement direction counter to the robots rotation
