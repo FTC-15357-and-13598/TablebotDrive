@@ -68,6 +68,8 @@ public class JustFieldCent extends LinearOpMode {
     private DcMotor leftBackDrive = null;
     private DcMotor rightFrontDrive = null;
     private DcMotor rightBackDrive = null;
+    private DcMotor shooterMotor1 = null;
+    private DcMotor shooterMotor2 = null;
 
     private Servo servoTest = null;
     Orientation angles;
@@ -86,6 +88,8 @@ public class JustFieldCent extends LinearOpMode {
         leftBackDrive  = hardwareMap.get(DcMotor.class, "leftBackDrive");
         rightFrontDrive = hardwareMap.get(DcMotor.class, "rightFrontDrive");
         rightBackDrive = hardwareMap.get(DcMotor.class, "rightBackDrive");
+        shooterMotor1 = hardwareMap.get(DcMotor.class, "shooterMotor1");
+        shooterMotor2 = hardwareMap.get(DcMotor.class, "shooterMotor2");
 
         /*
          * This initializes the servoTest servo. You would initialize other servos using the same method.
@@ -194,6 +198,10 @@ public class JustFieldCent extends LinearOpMode {
             if (gamepad1.dpad_left){rightFrontDrive.setPower(1.0);}
             if (gamepad1.dpad_right){rightBackDrive.setPower(1.0);}
 
+            if (gamepad1.a){shooterMotor1.setPower(1.0);}
+            else {shooterMotor1.setPower(0);}
+            if (gamepad1.a){shooterMotor2.setPower(1.0);}
+            else {shooterMotor2.setPower(0);}
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
