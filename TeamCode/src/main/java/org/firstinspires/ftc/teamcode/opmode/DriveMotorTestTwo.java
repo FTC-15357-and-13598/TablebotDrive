@@ -42,7 +42,7 @@
  *
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
@@ -50,6 +50,7 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -58,9 +59,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@TeleOp(name="Just Field Centric Test", group="Linear OpMode")
+@TeleOp(name="Just Field Centric Test 2", group="Linear OpMode")
 //@Disabled
-public class JustFieldCent extends LinearOpMode {
+public class DriveMotorTestTwo extends LinearOpMode {
 
     // Motor locations defined below. .
     private ElapsedTime runtime = new ElapsedTime();
@@ -68,13 +69,14 @@ public class JustFieldCent extends LinearOpMode {
     private DcMotor leftBackDrive = null;
     private DcMotor rightFrontDrive = null;
     private DcMotor rightBackDrive = null;
-    private DcMotor shooterMotor1 = null;
-    private DcMotor shooterMotor2 = null;
+    private DcMotorEx shooterMotor1 = null;
+    private DcMotor intakeMotor = null;
 
-    private Servo servoTest = null;
+    private Servo intakeServo = null;
     Orientation angles;
 
     private IMU imu = null;
+
 
     @Override
     public void runOpMode() {
@@ -84,12 +86,13 @@ public class JustFieldCent extends LinearOpMode {
          * These names are critical, label the front of the robot as FRONT. This will be
          * important later!
          */
-        leftFrontDrive  = hardwareMap.get(DcMotor.class, "leftFrontDrive");
-        leftBackDrive  = hardwareMap.get(DcMotor.class, "leftBackDrive");
-        rightFrontDrive = hardwareMap.get(DcMotor.class, "rightFrontDrive");
-        rightBackDrive = hardwareMap.get(DcMotor.class, "rightBackDrive");
-        shooterMotor1 = hardwareMap.get(DcMotor.class, "shooterMotor1");
-        shooterMotor2 = hardwareMap.get(DcMotor.class, "shooterMotor2");
+        leftFrontDrive  = hardwareMap.get(DcMotorEx.class, "leftFrontDrive");
+        leftBackDrive  = hardwareMap.get(DcMotorEx.class, "leftBackDrive");
+        rightFrontDrive = hardwareMap.get(DcMotorEx.class, "rightFrontDrive");
+        rightBackDrive = hardwareMap.get(DcMotorEx.class, "rightBackDrive");
+        shooterMotor1 = hardwareMap.get(DcMotorEx.class, "shooterMotor1");
+        intakeMotor = hardwareMap.get(DcMotor.class, "intakeMotor");
+        intakeServo = hardwareMap.get(Servo.class, "intakeServo");
 
         /*
          * This initializes the servoTest servo. You would initialize other servos using the same method.
@@ -98,7 +101,6 @@ public class JustFieldCent extends LinearOpMode {
         //// Set up our telemetry dashboard
         FtcDashboard dashboard = FtcDashboard.getInstance();
         TelemetryPacket packet = new TelemetryPacket();
-
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
         // ########################################################################################
@@ -109,11 +111,23 @@ public class JustFieldCent extends LinearOpMode {
         // when you first test your robot, push the left joystick forward and observe the direction the wheels turn.
         // Reverse the direction (flip FORWARD <-> REVERSE ) of any wheel that runs backward
         // Keep testing until ALL the wheels move the robot forward when you push the left joystick forward.
-        leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
-        leftBackDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftBackDrive.setDirection(DcMotor.Direction.FORWARD);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
+        shooterMotor1.setDirection(DcMotorEx.Direction.FORWARD);
+        intakeServo.setDirection(Servo.Direction.FORWARD);
+/*
+        leftBackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBackDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFrontDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+*/
+        double speedModifier;   //speed modifier for turbo
+        intakeServo.setPosition(0.5);
 
+        shooterMotor1.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        intakeMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         // Wait for the game to start (driver presses PLAY) This will display on the Driver Station.
         telemetry.addData("Status", "Initialized");
 
@@ -122,7 +136,7 @@ public class JustFieldCent extends LinearOpMode {
         //Adjust the orientation of the IMU to match our configuration.
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.RIGHT,
-                RevHubOrientationOnRobot.UsbFacingDirection.DOWN));
+                RevHubOrientationOnRobot.UsbFacingDirection.UP));
         //Without this the REV hub orientation is assumed to be Logo Up and USB Forward.
         imu.initialize(parameters);
 
@@ -131,6 +145,7 @@ public class JustFieldCent extends LinearOpMode {
         waitForStart();
         runtime.reset();
 
+         boolean isShooting=false;
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
@@ -180,7 +195,11 @@ public class JustFieldCent extends LinearOpMode {
             //Correct for axial
             axialRotated = axialRotated * 1.1;
 
-            double speedModifier = 0.5; //speed 50%
+            if (gamepad1.right_trigger>0.5){
+            speedModifier = 1.0;} //speed 100%
+            else {
+                speedModifier = 0.5;
+            }
 
             double leftFrontPower  = (axialRotated + lateralRotated + yaw) / denominator * speedModifier;
             double rightFrontPower = (axialRotated - lateralRotated - yaw) / denominator * speedModifier;
@@ -192,16 +211,39 @@ public class JustFieldCent extends LinearOpMode {
             rightFrontDrive.setPower(rightFrontPower);
             leftBackDrive.setPower(leftBackPower);
             rightBackDrive.setPower(rightBackPower);
+            //get encoder velocity
+
+
+           double shooterVelocity = shooterMotor1.getVelocity();
+            telemetry.addData("velocity", shooterVelocity);
 
             if (gamepad1.dpad_up){leftFrontDrive.setPower(1.0);}
             if (gamepad1.dpad_down){leftBackDrive.setPower(1.0);}
             if (gamepad1.dpad_left){rightFrontDrive.setPower(1.0);}
             if (gamepad1.dpad_right){rightBackDrive.setPower(1.0);}
 
-            if (gamepad1.a){shooterMotor1.setPower(1.0);}
-            else {shooterMotor1.setPower(0);}
-            if (gamepad1.a){shooterMotor2.setPower(1.0);}
-            else {shooterMotor2.setPower(0);}
+            if (gamepad2.y){
+                shooterMotor1.setPower(0.75);
+                if (shooterVelocity>1800){isShooting=true;
+                    intakeServo.setPosition(0);
+
+                }
+                else {intakeServo.setPosition(0.5);
+                    isShooting=false;}
+
+            }//was .7
+            else if (gamepad2.x){shooterMotor1.setPower(-0.8);
+                    intakeServo.setPosition(1.0);}
+            else {shooterMotor1.setPower(0);
+                intakeServo.setPosition(0.5);}
+
+
+            if (gamepad2.b){intakeMotor.setPower(1.0);}
+            else {intakeMotor.setPower(0);}
+            if (gamepad2.a) {intakeServo.setPosition(0);}
+
+
+            //else if (isShooting==false){intakeServo.setPosition(0.5);}
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
@@ -209,6 +251,7 @@ public class JustFieldCent extends LinearOpMode {
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontDrive.getPower(), rightFrontDrive.getPower());
             //Read encoder velocity for back motors
             telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackDrive.getPower(), rightBackDrive.getPower());
+            telemetry.addData("shooter speed",shooterMotor1.getVelocity());
             telemetry.update();
         }
     }
