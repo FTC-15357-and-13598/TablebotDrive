@@ -38,7 +38,7 @@ public class Constants {
         public static final double X_DEADBAND      = 0.2;     // Error less than this causes zero output.  Must be smaller than DRIVE_TOLERANCE
         public static final double X_MAX_AUTO      = 0.9;     // "default" Maximum Axial power limit during autonomous
 
-        public static final double Y_GAIN         = -0.025;    // Strength of lateral position control
+        public static final double Y_GAIN         = 0.025;    // Strength of lateral position control
         public static final double Y_ACCEL        = 1000;  //previously 50   // Acceleration limit.  Percent Power change per second.  1.0 = 0-100% power in 1 sec.
         public static final double Y_TOLERANCE    = 1.5;     // Controller is is "inPosition" if position error is < +/- this amount
         public static final double Y_DEADBAND     = 0.2;     // Error less than this causes zero output.  Must be smaller than DRIVE_TOLERANCE
@@ -55,14 +55,14 @@ public class Constants {
 
         //Todo define starting linear and angular scalers, offset on robot and starting pose
         public static final SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(0,0,180); // Offset for Otos mounting on robot
-        public static final double linearScaler = 1.02;
+        public static final double linearScaler = 1.0;
         public static final double angularScaler = 1.0;
 
-        public static final SparkFunOTOS.Pose2D R1 = new SparkFunOTOS.Pose2D(36,19,180.0); // Starting position red 1
-        public static final SparkFunOTOS.Pose2D R2 = new SparkFunOTOS.Pose2D(36,29,180.0); // Starting position red 2
-        public static final SparkFunOTOS.Pose2D R3 = new SparkFunOTOS.Pose2D(36,39,180.0); // Starting position red 3
-        public static final SparkFunOTOS.Pose2D B1 = new SparkFunOTOS.Pose2D(36,19,180.0); // Starting position blue 1
-        public static final SparkFunOTOS.Pose2D B2 = new SparkFunOTOS.Pose2D(36,29,180.0); // Starting position blue 2
+        public static final SparkFunOTOS.Pose2D R1 = new SparkFunOTOS.Pose2D(40.5,9,180.0); // Starting position red 1
+        public static final SparkFunOTOS.Pose2D R2 = new SparkFunOTOS.Pose2D(61,9,180.0); // Starting position red 2
+        public static final SparkFunOTOS.Pose2D R3 = new SparkFunOTOS.Pose2D(81,9,180.0); // Starting position red 3
+        public static final SparkFunOTOS.Pose2D B1 = new SparkFunOTOS.Pose2D(101,9,180.0); // Starting position blue 1
+        public static final SparkFunOTOS.Pose2D B2 = new SparkFunOTOS.Pose2D(81,9,180.0); // Starting position blue 2
         public static final SparkFunOTOS.Pose2D B3 = new SparkFunOTOS.Pose2D(36,39,180.0); // Starting position blue 3
 
         public static final double alignGain = 0.1; //gain for auto align

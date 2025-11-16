@@ -60,6 +60,7 @@ public class DecodeAuton extends LinearOpMode {
 
         String alliance = null;  // Will be written to alliance data
         int startingPosition =0; // will prompt for starting position between 1 and 3
+        int step   =0;  // this will be ste based on alliance and starting position
 
     @Override
     public void runOpMode() {
@@ -110,30 +111,63 @@ public class DecodeAuton extends LinearOpMode {
         if (Objects.equals(alliance, "Blue")){
             if (startingPosition == 1) {
                 drivetrain.setPose(Constants.Drivetrain.B1);
+                step = 61;  // 61= Blue 1 auton
             } else if (startingPosition ==2 ) {
                 drivetrain.setPose(Constants.Drivetrain.B2);
+                step = 81; //81=Blue 2 auton
             } else {
                 drivetrain.setPose(Constants.Drivetrain.B3);
+                step = 101; // 101 = blue 3 auton
             }
         } else {
             if (startingPosition == 1) {
                 drivetrain.setPose(Constants.Drivetrain.R1);
+                step=1; // 1= red 1 auton
             } else if (startingPosition ==2 ) {
                 drivetrain.setPose(Constants.Drivetrain.R2);
+                step =21; // 21= Red 2 auton
             } else {
                 drivetrain.setPose(Constants.Drivetrain.R3);
+                step =41; // 01 = Red 3 Auton
             }
         }
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             /* Call periodic for subsystems that have a periodic voids,
              do these first as some of the voids called by the commands and other sequences
-             require data from the periodic functions.
+             require data from the periodic functions. NOTE: Periodics will not be called
+             during divetrain.gotoPosition commands due to the fact they do not return unitl
+             the robot is in position.
              */
             intksht.periodic();
             dummy =drivetrain.periodic(); //This is called as a variable for scheduling reasons
 
+            /*Steps for Auton,  initialization, step will be set to 1 if the robot is
+              in position red 1, 21 if red 2, 41 if red 3, 61 if blue 1, 81, if blue 2
+              and 101 if blue 3
+             */
 
+        //Begin switch structure
+        switch (step){
+            case 1:     //first step of Auton for Red 1
+                drivetrain.gotoPosition(40.5,80,-135,.3,5);
+                // step =step+1 // uncomment this to move to next step
+
+            case 21:    //first step of Auton for Red 2
+                // step =step+1 // uncomment this to move to next step
+
+            case 41:    //first step of Auton for Red 3
+                // step =step+1 // uncomment this to move to next step
+
+            case 61:    //first step of Auton for Blue 1
+                // step =step+1 // uncomment this to move to next step
+
+            case 81:    //first step of Auton for Blue 2
+                // step =step+1 // uncomment this to move to next step
+
+            case 101:    //first step of Auton for Blue 3
+                // step =step+1 // uncomment this to move to next step
+        }
 
 
 

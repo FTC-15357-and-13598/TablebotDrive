@@ -281,8 +281,8 @@ public class MoMoreBotsDrivetrain {
         while (myOpMode.opModeIsActive() && periodic()){
 
             // implement desired axis powers
-            //moveRobotFCAuto(xController.getOutput(otosXPostion), yController.getOutput(otosYPostion), headingController.getOutput(heading));
-            moveRobotFCAuto(yController.getOutput(otosYPostion), xController.getOutput(otosXPostion), headingController.getOutput(otosHead));
+            moveRobotFCAuto(xController.getOutput(otosXPostion), yController.getOutput(otosYPostion), headingController.getOutput(heading));
+            //moveRobotFCAuto(yController.getOutput(otosYPostion), xController.getOutput(otosXPostion), headingController.getOutput(otosHead));
 
 
             myOpMode.telemetry.addData("x output",xController.getOutput(otosXPostion));
