@@ -281,7 +281,7 @@ public class MoMoreBotsDrivetrain {
         while (myOpMode.opModeIsActive() && periodic()){
 
             // implement desired axis powers
-            moveRobotFCAuto(xController.getOutput(otosXPostion), yController.getOutput(otosYPostion), headingController.getOutput(heading));
+            moveRobotFCAuto(xController.getOutput(otosXPostion), yController.getOutput(otosYPostion), headingController.getOutput(otosHead));
             //moveRobotFCAuto(yController.getOutput(otosYPostion), xController.getOutput(otosXPostion), headingController.getOutput(otosHead));
 
 
@@ -290,13 +290,14 @@ public class MoMoreBotsDrivetrain {
             myOpMode.telemetry.addData("h output",headingController.getOutput(otosHead));
             myOpMode.telemetry.addData("x position",otosXPostion);
             myOpMode.telemetry.addData("y position",otosYPostion);
-            myOpMode.telemetry.addData("In Pos x",xController.inPosition);
-            myOpMode.telemetry.addData("In Pos y",yController.inPosition);
-            myOpMode.telemetry.addData("In Pos h",headingController.inPosition);
+            myOpMode.telemetry.addData("In Pos x",xController.inPosition());
+            myOpMode.telemetry.addData("In Pos y",yController.inPosition());
+            myOpMode.telemetry.addData("In Pos h",headingController.inPosition());
+            myOpMode.telemetry.addData("h error",headingController.setPoint);
             myOpMode.telemetry.update();
 
             // Time to exit?
-            if (xController.inPosition() && yController.inPosition() && headingController.inPosition) {
+            if (xController.inPosition() && yController.inPosition() && headingController.inPosition()) {
                 if (holdTimer.time() > holdTime) {
                     break;   // Exit loop if we are in position, and have been there long enough.
                 }
