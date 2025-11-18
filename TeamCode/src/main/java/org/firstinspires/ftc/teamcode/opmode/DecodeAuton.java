@@ -162,9 +162,13 @@ public class DecodeAuton extends LinearOpMode {
                 // step =step+1 // uncomment this to move to next step
 
             case 61:    //first step of Auton for Blue 1
+                drivetrain.gotoPosition(41,60,180,.3,0);
+                drivetrain.gotoPosition(58,87,-135,.3,5);
+                step =200;
                 // step =step+1 // uncomment this to move to next step
 
             case 81:    //first step of Auton for Blue 2
+                drivetrain.gotoPosition(57,14.5,-161,.3,1);
                 // step =step+1 // uncomment this to move to next step
 
             case 101:    //first step of Auton for Blue 3

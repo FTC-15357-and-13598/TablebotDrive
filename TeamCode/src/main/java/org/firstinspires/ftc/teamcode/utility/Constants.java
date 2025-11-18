@@ -58,12 +58,12 @@ public class Constants {
         public static final double linearScaler = 1.0;
         public static final double angularScaler = 1.0;
 
-        public static final SparkFunOTOS.Pose2D R1 = new SparkFunOTOS.Pose2D(40.5,9,180.0); // Starting position red 1
-        public static final SparkFunOTOS.Pose2D R2 = new SparkFunOTOS.Pose2D(61,9,180.0); // Starting position red 2
-        public static final SparkFunOTOS.Pose2D R3 = new SparkFunOTOS.Pose2D(81,9,180.0); // Starting position red 3
-        public static final SparkFunOTOS.Pose2D B1 = new SparkFunOTOS.Pose2D(101,9,180.0); // Starting position blue 1
-        public static final SparkFunOTOS.Pose2D B2 = new SparkFunOTOS.Pose2D(81,9,180.0); // Starting position blue 2
-        public static final SparkFunOTOS.Pose2D B3 = new SparkFunOTOS.Pose2D(36,39,180.0); // Starting position blue 3
+        public static final SparkFunOTOS.Pose2D R1 = new SparkFunOTOS.Pose2D(81,8.5,180.0); // Starting position red 1
+        public static final SparkFunOTOS.Pose2D R2 = new SparkFunOTOS.Pose2D(101,8.5,180.0); // Starting position red 2
+        public static final SparkFunOTOS.Pose2D R3 = new SparkFunOTOS.Pose2D(124,121,180.0); // Starting position red 3
+        public static final SparkFunOTOS.Pose2D B1 = new SparkFunOTOS.Pose2D(41,8.5,180.0); // Starting position blue 1
+        public static final SparkFunOTOS.Pose2D B2 = new SparkFunOTOS.Pose2D(61,8.5,180.0); // Starting position blue 2
+        public static final SparkFunOTOS.Pose2D B3 = new SparkFunOTOS.Pose2D(24,121,180.0); // Starting position blue 3
 
         public static final double alignGain = 0.1; //gain for auto align
     }
