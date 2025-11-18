@@ -115,7 +115,7 @@ public class DecodeTeleOp extends LinearOpMode {
             dummy = drivetrain.periodic(); //This is called as a variable for scheduling reasons
 
 
-            //Variables for the specimen subsystem.
+            //cool stuff
             telemetry.addData("Bot heading", drivetrain.heading);
 
             // Gamepad inputs

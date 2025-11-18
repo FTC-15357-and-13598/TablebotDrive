@@ -34,11 +34,12 @@ import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.robomossystem.MoMoreBotsDrivetrain;
-import org.firstinspires.ftc.teamcode.robomossystem.*;
+import org.firstinspires.ftc.teamcode.robomossystem.allianceData;
+import org.firstinspires.ftc.teamcode.robomossystem.intakeShooter;
+import org.firstinspires.ftc.teamcode.robomossystem.vision;
 import org.firstinspires.ftc.teamcode.utility.Constants;
 
 import java.util.Objects;
@@ -136,7 +137,7 @@ public class DecodeAuton extends LinearOpMode {
             /* Call periodic for subsystems that have a periodic voids,
              do these first as some of the voids called by the commands and other sequences
              require data from the periodic functions. NOTE: Periodics will not be called
-             during divetrain.gotoPosition commands due to the fact they do not return unitl
+             during drivetrain.gotoPosition commands due to the fact they do not return until
              the robot is in position.
              */
             intksht.periodic();
@@ -150,8 +151,8 @@ public class DecodeAuton extends LinearOpMode {
         //Begin switch structure
         switch (step){
             case 1:     //first step of Auton for Red 1
-                drivetrain.gotoPosition(40.5,80,180,.3,0);
-                drivetrain.gotoPosition(40.5,110,110,.3,5);
+                drivetrain.gotoPosition(81,8.5,180,.3,0);
+                drivetrain.gotoPosition(90,82,140,.3,5);
                 step =200;   //step 200 to end Auton
                 // step =step+1 // uncomment this to move to next step
 
@@ -159,6 +160,9 @@ public class DecodeAuton extends LinearOpMode {
                 // step =step+1 // uncomment this to move to next step
 
             case 41:    //first step of Auton for Red 3
+                drivetrain.gotoPosition(122,121.5,135,.3,0);
+                drivetrain.gotoPosition(90,82,140,.3,5);
+                step =200;
                 // step =step+1 // uncomment this to move to next step
 
             case 61:    //first step of Auton for Blue 1
@@ -169,9 +173,52 @@ public class DecodeAuton extends LinearOpMode {
 
             case 81:    //first step of Auton for Blue 2
                 drivetrain.gotoPosition(57,14.5,-161,.3,1);
-                // step =step+1 // uncomment this to move to next step
+                step = 200; // uncomment this to move to next step
+/*
+            case 82:    //start shooter and wait for it to get to speed
+                intksht.shootWpower(.8); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 83; // uncomment this to move to next step
+                }
+                break;
 
+            case 83:    //at speed will turn off when first ball shoots
+                intksht.shootWpower(.8); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 84; // uncomment this to move to next step
+                    intksht.runIntake();
+                }
+                break;
+
+            case 84:    //will get to speed before 2nd ball shoots
+                intksht.shootWpower(.8); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 85; // uncomment this to move to next step
+                }
+
+            case 85:    //at speed will turn off when second ball shoots
+                intksht.shootWpower(.8); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 86; // uncomment this to move to next step
+                }
+
+            case 86:    //will get to speed before 3rd ball shoots
+                intksht.shootWpower(.8); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 87; // uncomment this to move to next step
+                }
+
+            case 87:    //at speed will turn off when 3rd ball shoots
+                intksht.shootWpower(.8); //start shooter
+                if (!intksht.shootAtSpd) {
+                    intksht.stopShooting();
+                    intksht.stopIntake();
+                    step = 200; // 3rd ball gone, we're done
+                }
+*/
             case 101:    //first step of Auton for Blue 3
+                drivetrain.gotoPosition(58,84,-135,.3,1);
+                step=200;
                 // step =step+1 // uncomment this to move to next step
 
 
@@ -182,7 +229,9 @@ public class DecodeAuton extends LinearOpMode {
 
 
 
+        telemetry.addData("Current Step", step);
         telemetry.update();
+        dashboard.sendTelemetryPacket(packet);
         }
     }
     //Put any super-system type voids here
