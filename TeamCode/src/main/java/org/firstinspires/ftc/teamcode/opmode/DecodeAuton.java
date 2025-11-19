@@ -151,7 +151,7 @@ public class DecodeAuton extends LinearOpMode {
         //Begin switch structure
         switch (step){
             case 1:     //first step of Auton for Red 1
-                drivetrain.gotoPosition(81,8.5,180,.3,0);
+                drivetrain.gotoPosition(101,8.5,180,.3,0);
                 drivetrain.gotoPosition(90,82,140,.3,5);
                 step =200;   //step 200 to end Auton
                 break;  // every case must end with a break
@@ -161,7 +161,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 41:    //first step of Auton for Red 3
-                drivetrain.gotoPosition(122,121.5,135,.3,0);
+                drivetrain.gotoPosition(122,120.5,135,.3,0);
                 drivetrain.gotoPosition(90,82,140,.3,5);
                 step =200;
                 break;  // every case must end with a break
