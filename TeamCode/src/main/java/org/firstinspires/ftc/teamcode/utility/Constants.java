@@ -63,7 +63,7 @@ public class Constants {
         public static final SparkFunOTOS.Pose2D R3 = new SparkFunOTOS.Pose2D(122,120.5,135.0); // Starting position red 3
         public static final SparkFunOTOS.Pose2D B1 = new SparkFunOTOS.Pose2D(41.5,8.5,180.0); // Starting position blue 1
         public static final SparkFunOTOS.Pose2D B2 = new SparkFunOTOS.Pose2D(61,8.5,180.0); // Starting position blue 2
-        public static final SparkFunOTOS.Pose2D B3 = new SparkFunOTOS.Pose2D(21.5,121.5,-135); // Starting position blue 3
+        public static final SparkFunOTOS.Pose2D B3 = new SparkFunOTOS.Pose2D(24.5,126.0,-135); // Starting position blue 3
 
         public static final double alignGain = 0.1; //gain for auto align
     }
@@ -80,7 +80,7 @@ public class Constants {
 
         public static final double shootPower           =0.75;
         public static final double shooterBackUpPower   =-0.2;
-        public static final double thresholdFactor =2100;  // This will be multiplied by the power to the shooter motor. The resulting
+        public static final double thresholdFactor =2200;  // This will be multiplied by the power to the shooter motor. The resulting
                                                                 // number will be compared to the speed, if the shooter speed is above the value
                                                                 // the servo will be allowed to advance a ball to the shooter.
 
