@@ -145,6 +145,11 @@ public class DecodeTeleOp extends LinearOpMode {
             } else if (gamepad2.right_trigger <0.1 && intksht.shooting) {
                 intksht.stopShooting();
             }
+            if (gamepad2.y) {
+                intksht.reverseIntake();}
+            else if (gamepad2.yWasReleased()) {
+                    intksht.stopIntake();
+                }
 
 
             //Reset Yaw of IMU for FC drive if Driver hits back
