@@ -157,12 +157,117 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 21:    //first step of Auton for Red 2
-                // step =step+1 // uncomment this to move to next step
+                drivetrain.gotoPosition(83,15,157,.3,.5);
+               step = 22;
                 break;  // every case must end with a break
 
+            case 22:    //start shooter and wait for it to get to speed
+                intksht.shootWpower(.8); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 23; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 23:    //at speed will turn off when first ball shoots
+                intksht.shootWpower(.80); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 24; // uncomment this to move to next step
+                    wait(0.5);
+                }
+                break;  // every case must end with a break
+
+            case 24:    //will get to speed before 2nd ball shoots
+                intksht.shootWpower(.81); //start shooter
+                if (intksht.shootAtSpd) {
+                    intksht.runIntake();
+                    step = 25; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 25:    //at speed will turn off when second ball shoots
+                intksht.shootWpower(.81); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 26; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 26:    //will get to speed before 3rd ball shoots
+                intksht.shootWpower(.81); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 27; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 27:    //at speed will turn off when 3rd ball shoots
+                intksht.shootWpower(.81); //start shooter
+                if (!intksht.shootAtSpd) {
+                    intksht.stopShooting();
+                    intksht.stopIntake();
+                    step = 28; // 3rd ball gone, move on
+                }
+                break;  // every case must end with a break
+            case 28:
+                drivetrain.gotoPosition(99,29,-55,.3,0.5);
+                step = 200;
+
+                break;
             case 41:    //first step of Auton for Red 3
-                drivetrain.gotoPosition(122,120.5,135,.3,0);
-                drivetrain.gotoPosition(90,82,140,.3,5);
+                drivetrain.gotoPosition(87,85.5,135,.3,0.2);
+
+                step =42;
+                break;  // every case must end with a break
+
+            case 42:    //start shooter and wait for it to get to speed
+                intksht.shootWpower(.72); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 43; // uncomment this to move to next step
+                    wait(0.5);
+                }
+                break;  // every case must end with a break
+
+            case 43:    //at speed will turn off when first ball shoots
+                intksht.shootWpower(.72); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 44; // uncomment this to move to next step
+                    wait(0.5);
+                }
+                break;  // every case must end with a break
+
+            case 44:    //will get to speed before 2nd ball shoots
+                intksht.shootWpower(.72); //start shooter
+                if (intksht.shootAtSpd) {
+                    intksht.runIntake();
+                    step = 45; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 45:    //at speed will turn off when second ball shoots
+                intksht.shootWpower(.72); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 46; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 46:    //will get to speed before 3rd ball shoots
+                intksht.shootWpower(.72); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 47; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 47:    //at speed will turn off when 3rd ball shoots
+                intksht.shootWpower(.72); //start shooter
+                if (!intksht.shootAtSpd) {
+                    intksht.stopShooting();
+                    intksht.stopIntake();
+                    step = 48; // 3rd ball gone, move on
+                }
+                break;
+
+            case 48:
+                drivetrain.gotoPosition(100,85.5,-105,.3,0.2);
+                intksht.runIntake();
+                drivetrain.gotoPosition(119,80,-105,.2,0.2);
                 step =200;
                 break;  // every case must end with a break
 
