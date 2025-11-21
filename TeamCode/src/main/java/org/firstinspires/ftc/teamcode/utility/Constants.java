@@ -65,7 +65,7 @@ public class Constants {
         public static final SparkFunOTOS.Pose2D B2 = new SparkFunOTOS.Pose2D(61,8.5,180.0); // Starting position blue 2
         public static final SparkFunOTOS.Pose2D B3 = new SparkFunOTOS.Pose2D(24.5,126.0,-135); // Starting position blue 3
 
-        public static final double alignGain = 0.1; //gain for auto align
+        public static final double alignGain = -0.05; //gain for auto align
     }
     public static final class IntakeShooter {
         // Drivetrain Motors, Define configured name and direction

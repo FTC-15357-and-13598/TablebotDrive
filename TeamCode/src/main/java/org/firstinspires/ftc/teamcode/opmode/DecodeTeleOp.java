@@ -189,7 +189,7 @@ public class DecodeTeleOp extends LinearOpMode {
             // TODO Uncomment the below line to go back to robot FC, but then comment the moveRobot line
             //calculate alignment
             double alignTurn;//// = vision.tagHeading() * Constants.Drivetrain.alignGain;
-            if (gamepad1.a) {
+            if (gamepad1.a &&(Math.abs(vision.tagHeading())<100.0)) {
                 //calculate alignment
                  alignTurn = vision.tagHeading() * Constants.Drivetrain.alignGain;
                 drivetrain.moveRobotFC(xComponent, yComponent, alignTurn, speedfact);
