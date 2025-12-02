@@ -142,12 +142,12 @@ public class DecodeTeleOp extends LinearOpMode {
             // Shoot on y, stop when released
             if (gamepad2.right_trigger > 0.1) {
                 intksht.shoot();
-            } else if (gamepad2.right_trigger <0.1 && intksht.shooting) {
+            } else if (gamepad2.right_trigger <0.1 && gamepad2.right_trigger <0.1 && intksht.shooting) {
                 intksht.stopShooting();
             }
             if (gamepad2.left_trigger > 0.1) {
-                intksht.shootWpower(0.71);
-            } else if (gamepad2.left_trigger <0.1 && intksht.shooting) {
+                intksht.shootWpower(0.74);
+            } else if (gamepad2.left_trigger <0.1 && gamepad2.right_trigger <0.1 && intksht.shooting) {
                 intksht.stopShooting();
             }
             if (gamepad2.y) {

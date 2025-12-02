@@ -156,7 +156,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 2:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower (Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 3; // uncomment this to move to next step
                     wait(0.5);
@@ -164,7 +164,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 3:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 4; // uncomment this to move to next step
                     wait(0.5);
@@ -172,7 +172,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 4:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 5; // uncomment this to move to next step
@@ -180,21 +180,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 5:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 6; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 6:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 7; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 7:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -212,7 +212,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 9:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 10; // uncomment this to move to next step
                     wait(0.5);
@@ -220,7 +220,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 10:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 11; // uncomment this to move to next step
                     wait(0.5);
@@ -228,7 +228,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 11:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 12; // uncomment this to move to next step
@@ -236,21 +236,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 12:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 13; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 13:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 14; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 14:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -259,19 +259,19 @@ public class DecodeAuton extends LinearOpMode {
                 break;
 
             case 21:    //first step of Auton for Red 2
-                drivetrain.gotoPosition(83,15,157,.3,.5);
+                drivetrain.gotoPosition(83,15,155,.3,.5);
                step = 22;
                 break;  // every case must end with a break
 
             case 22:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.8); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 23; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 23:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 24; // uncomment this to move to next step
                     wait(0.5);
@@ -279,7 +279,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 24:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.81); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 25; // uncomment this to move to next step
@@ -287,21 +287,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 25:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.81); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 26; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 26:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.81); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 27; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 27:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.81); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -310,9 +310,63 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
             case 28:
                 drivetrain.gotoPosition(99,29,-55,.3,0.5);
-                step = 200;
+                intksht.runIntake();
+                drivetrain.gotoPosition(114,29,-55,.3,0.5);
+                intksht.stopIntake();
+                step = 29;
 
                 break;
+            case 29:    //first step of Auton for Red 2
+                drivetrain.gotoPosition(83,15,155,.3,.5);
+                step = 30;
+                break;  // every case must end with a break
+
+            case 30:    //start shooter and wait for it to get to speed
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 31; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 31:    //at speed will turn off when first ball shoots
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 32; // uncomment this to move to next step
+                    wait(0.5);
+                }
+                break;  // every case must end with a break
+
+            case 32:    //will get to speed before 2nd ball shoots
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
+                if (intksht.shootAtSpd) {
+                    intksht.runIntake();
+                    step = 33; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 33:    //at speed will turn off when second ball shoots
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
+                if (!intksht.shootAtSpd) {
+                    step = 34; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 34:    //will get to speed before 3rd ball shoots
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
+                if (intksht.shootAtSpd) {
+                    step = 35; // uncomment this to move to next step
+                }
+                break;  // every case must end with a break
+
+            case 35:    //at speed will turn off when 3rd ball shoots
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
+                if (!intksht.shootAtSpd) {
+                    intksht.stopShooting();
+                    intksht.stopIntake();
+                    step = 200; // 3rd ball gone, move on
+                }
+                break;  // every case must end with a break
+
             case 41:    //first step of Auton for Red 3
                 drivetrain.gotoPosition(87,85.5,135,.3,0.2);
 
@@ -320,7 +374,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 42:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 43; // uncomment this to move to next step
                     wait(0.5);
@@ -328,7 +382,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 43:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 44; // uncomment this to move to next step
                     wait(0.5);
@@ -336,7 +390,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 44:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 45; // uncomment this to move to next step
@@ -344,21 +398,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 45:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 46; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 46:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 47; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 47:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -369,14 +423,14 @@ public class DecodeAuton extends LinearOpMode {
             case 48:
                 drivetrain.gotoPosition(100,85.5,-105,.3,0.2);
                 intksht.runIntake();
-                drivetrain.gotoPosition(119,80,-105,.2,0.2);
+                drivetrain.gotoPosition(125,80,-105,.2,0.2);
                 intksht.stopIntake();
                 drivetrain.gotoPosition(87,85.5,135,.3,0.2);
                 step =49;
                 break;  // every case must end with a break
 
             case 49:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 50; // uncomment this to move to next step
                     wait(0.5);
@@ -384,7 +438,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 50:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 51; // uncomment this to move to next step
                     wait(0.5);
@@ -392,7 +446,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 51:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 52; // uncomment this to move to next step
@@ -400,21 +454,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 52:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 53; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 53:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 54; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 54:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.71); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -429,19 +483,19 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 81:    //first step of Auton for Blue 2
-                drivetrain.gotoPosition(57,14.5,-157,.3,.15);
+                drivetrain.gotoPosition(57,14.5,-159,.3,.15);
                 step = 82; // uncomment this to move to next step
                 break;  // every case must end with a break
 
             case 82:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.8); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 83; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 83:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 84; // uncomment this to move to next step
                     wait(0.5);
@@ -449,7 +503,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 84:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 85; // uncomment this to move to next step
@@ -457,21 +511,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 85:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 86; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 86:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 87; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 87:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -482,21 +536,21 @@ public class DecodeAuton extends LinearOpMode {
             case 88:    //at speed will turn off when 3rd ball shoots
                 drivetrain.gotoPosition(42,30.5,57,.4,0);
                 intksht.runIntake();
-                drivetrain.gotoPosition(20,30.5,57,.3,1);
+                drivetrain.gotoPosition(18,30.5,57,.25,1);
                 intksht.stopIntake();
-                drivetrain.gotoPosition(57,14.5,-157,.3,1);
+                drivetrain.gotoPosition(57,14.5,-159,.3,1);
                 step=89;   //End Auton
                 break;  // every case must end with a break
 
             case 89:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.8); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 90; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 90:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 91; // uncomment this to move to next step
                     wait(0.5);
@@ -504,7 +558,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 91:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 92; // uncomment this to move to next step
@@ -512,21 +566,21 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 92:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 93; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 93:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 94; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 94:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.80); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonFarShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
@@ -540,7 +594,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break  // every case must end with a break
 
             case 102:    //start shooter and wait for it to get to speed
-                intksht.shootWpower(.7); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     wait(0.5);
                     step = 103; // uncomment this to move to next step
@@ -548,7 +602,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 103:    //at speed will turn off when first ball shoots
-                intksht.shootWpower(.70); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 104; // uncomment this to move to next step
                     wait(0.5);
@@ -556,7 +610,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 104:    //will get to speed before 2nd ball shoots
-                intksht.shootWpower(.70); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     intksht.runIntake();
                     step = 105; // uncomment this to move to next step
@@ -564,7 +618,7 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 105:    //at speed will turn off when second ball shoots
-                intksht.shootWpower(.70); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     step = 106; // uncomment this to move to next step
                     wait(0.5);
@@ -572,14 +626,14 @@ public class DecodeAuton extends LinearOpMode {
                 break;  // every case must end with a break
 
             case 106:    //will get to speed before 3rd ball shoots
-                intksht.shootWpower(.70); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (intksht.shootAtSpd) {
                     step = 107; // uncomment this to move to next step
                 }
                 break;  // every case must end with a break
 
             case 107:    //at speed will turn off when 3rd ball shoots
-                intksht.shootWpower(.70); //start shooter
+                intksht.shootWpower(Constants.IntakeShooter.autonCloseShot); //start shooter
                 if (!intksht.shootAtSpd) {
                     intksht.stopShooting();
                     intksht.stopIntake();
